@@ -1,0 +1,77 @@
+Nodejs
+- nodejs is not a langugage
+- this is a server environment
+- nodejs can connect with datatbase
+- code and syntax is very similar to javascript
+- nodejs free, opensource
+- uses chrome's v8 engine to execute code
+
+- Ryan Dhal embeded V8 engine with C-- and make nodejs its benefit to use javascript outside of browser
+- we can craete webservers in js langugage
+
+so nodejs is a runtime env for javascript
+
+Node.js is an open-source, cross-platform JavaScript runtime environment that allows developers to run JavaScript code server-side. 
+Essentially, it allows you to execute JavaScript code outside of a web browser. 
+Node.js uses an event-driven, non-blocking I/O model, making it efficient and lightweight, particularly for building scalable network applications.
+
+
+One of the key features of Node.js is its package ecosystem, npm (Node Package Manager), 
+which is one of the largest ecosystems of open-source libraries in the world. 
+This vast collection of modules enables developers to easily integrate various functionalities into their applications, ranging from web frameworks and database connectors to utility libraries and more
+
+chrome - v8
+firefox- spidermonkey
+safari - V8 JavaScript engine
+
+
+1st Topic - Hello World(hello.js)
+2nd- module (math.js)
+3rd- file handling (file.js)
+4th- how node js works
+5th- Node js Server ( without express)
+6th - 
+
+
+client ek request krta h server server
+
+request server me jaata h 
+sbse phle request event queue me queue hota h 
+usk baad ye request eventloop k pass jaata h 
+event loop hamesha eventqueue ko dekhta rehta h request k liye 
+or ek ek kr k request ko usme se nikalta h 
+
+there are two types of request
+Blocking , nonblocking 
+
+The event loop first checks whether a request is blocking or non-blocking. 
+If it's non-blocking, Node.js processes it and sends the response to the user.
+
+If the request is blocking, it goes to the thread pool. 
+Thread pools are pools of threads where a task is assigned to a thread.
+When the task is completed, the thread returns to the thread pool and waits for another request to be assigned.
+
+How many threads present in Thread Pool?
+the number of threads in the thread pool is determined by the underlying operating system and hardware.
+By default, Node.js creates a thread pool with a configurable size, typically based on the number of CPU cores available on the system.
+
+Node.js itself is single-threaded, meaning it uses a single main thread to execute JavaScript code. 
+However, when it needs to perform blocking I/O operations or execute CPU-intensive tasks asynchronously, it offloads these tasks to the thread pool.
+
+The default size of the thread pool in Node.js is typically determined by the formula:
+4 * number of CPU cores
+
+
+URL - uniform resource locator
+
+https://    www.google.com   /HomePage
+ ------      -------------    -------
+   ||             ||             ||        
+ Protocol        Domain         Path
+ hyper          
+ text
+ transfer
+ Protocol
+ secure
+
+  
