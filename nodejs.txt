@@ -30,8 +30,16 @@ safari - V8 JavaScript engine
 3rd- file handling (file.js)
 4th- how node js works
 5th- Node js Server ( without express)
-6th - 
-
+6th - Https Methods
+7th - express
+8th - How Versioning Works in NodeJS?
+9th - Rest API
+10th - Design Rest API 
+11th- 
+12th-
+13th- Headers
+14th - Status Code
+15ht - MongoDB
 
 client ek request krta h server server
 
@@ -64,14 +72,181 @@ The default size of the thread pool in Node.js is typically determined by the fo
 
 URL - uniform resource locator
 
-https://    www.google.com   /HomePage
- ------      -------------    -------
-   ||             ||             ||        
- Protocol        Domain         Path
+https://    www.google.com   /HomePage   ?name=pragalbh
+ ------      -------------    -------     ------------
+   ||             ||             ||           ||
+ Protocol        Domain         Path     Query Parameter
  hyper          
  text
  transfer
  Protocol
  secure
 
+
+Why express? 
+Express.js is a web application framework for Node.js that provides a simpler and more convenient way to build web servers and handle HTTP requests compared to using Node.js's built-in http module directly.
+
+express is just a framework internally express uses http
+
+app.Method(path, habdler)
+
+app is a instance of express
+methos is an http request method in lowercase
+patj is a path on the server like '/', '/about' , 'about?name=abc'
+handler is a function executed when  the route is matched.
+
+
+Versioning
+express: ^4.18.2 
+
+1st part - 4 = major release/Breaking Update (we should not update this in existing project because it can break our code) but if iam building new project then i can use new version but before reading docs
+
+2nd part - 18 = Recommended Bug Fix (security Fixes) need to update this or install this
+
+3rd - 2 (last part) minor Fixes: optional Versioning (inko install krna h to kr skte h nhi krna toh bhi fark nhi padega)
+
+^ (caret symbol) -  compatible with version
+^4.18.2 (from 4.18.2 less than 5.0.0 )
+means don't update 1st part never
+
+if ~4.18.2 onlu update last part 
+
+
+
+Restfull API -- A RESTful API (Representational State Transferful Application Programming Interface) is an architectural style for designing networked applications.
+It is based on a set of principles that define how resources are represented and addressed over the web.
+
+1. server Client arch.
+
+server response maybe text, image, html doc, JSON
+
+so if my client is browser then there is no prblem but if client is alexa, mobile then there is a problem we can render html docs in alexa or mobile
+
+1st rule- Client-Server Architecture: 
+The client and server are separate and independent components. 
+They interact with each other through a standardized interface, typically HTTP.
+
+2nd rule - all respect all http methods 
+hummne inko respect krna chahiye 
+eg: 
+- GET/user - return users data
+- post/user - handle new user creation
+- patch/user - update the user
+- post/ upadte user - if i will update user by using post method for updating a user then it will work but this is not best practice
+
+also get/getuser -> i am using get and also writing getuser no need to write getuser 
+
+post/deletuser - i will not use post for update and delete i will repect all http methods
+
+if i will do this then my api is restfull api 😎
+
+Rest API - JSON
+GET/users - List all users
+GET/users/1 - Get the user with Id 1
+GET/users/2 - Get the user with Id 2
+
+
+Middleware - 
+Middleware in Node.js refers to a concept where functions can 
+be used to process incoming requests before they reach their 
+final destination and handle outgoing responses before they 
+are sent back to the client. These functions sit in between 
+the initial request and the final response, hence the term 
+“middleware.”
+
+In Node.js, middleware functions are essentially functions that have access to the request object (req), the response object (res), and the next function in the application's request-response cycle.
+
+When a request is made to the server, it passes through a series of middleware functions before reaching the final route handler or endpoint.
+
+Each middleware function can perform its task and either pass the request to the next middleware function using the next function or terminate the request-response cycle by sending a response.
+
+What happens when the request reaches the last middleware in the chain ?
+The request passes through all middleware functions in the chain.
+If none of the middleware functions send a response back to the client (i.e., they all call the next() function to pass control to the next middleware or route handler):
+Express looks for a matching route handler based on the request URL and HTTP method.
+If a matching route handler is found, it is executed.
+If no matching route handler is found, Express sends a default “Not Found” response back to the client with a status code of 404.
+What is next() ?
+In Express.js, next() is a function that is used within middleware functions to pass control to the next middleware function in the chain. When next() is called within a middleware function, Express moves to the next middleware function defined in the application.
+
+When a middleware function is defined, it typically receives three arguments: req (the request object), res (the response object), and next (the next middleware function in the chain). By calling next() within a middleware function, the control is passed to the subsequent middleware function.
+
+Some common used Middleware
+cors : Enable cross-origin resource sharing (CORS) with various options.
+
+cookie-parser : Parse cookie header and populate req.cookies.
+
+morgan : HTTP requests logger.
+
+multer : Handle multi-part form data.
+
+Headers in every req and resp there is a packet and above this packet there is a header 
+http Headers are an important part of the api request 
+and response as they represent the meta-data associated with the API request and response
+
+Headers carry info for the request and response body.
+
+X-Powered-By -- Express (server is powered by express)
+Content-type -- application/json (content is json)
+content-length -- length of the content
+....
+...
+..
+.
+
+Status Code -
+
+Informational responses (100 – 199)
+Successful responses (200 – 299)
+Redirection messages (300 – 399)
+Client error responses (400 – 499)
+Server error responses (500 – 599)
+
+
+Successful responses- 
+200 OK
+201 Created -The request succeeded, and a new resource was created as a result. This is typically the response sent after POST requests, or some PUT requests.
+203 Non-Authoritative Information
+204 No Content
+
+MongoDB 
+
+Schema - Define the structure
+  Schema -Modal
+  using model we do CRUD operation
+
+
+
+Stream && Buffer
+
+Stream
+A stream is a way to handle continuous data flow, allowing you to read or write data in small chunks without loading everything into memory at once.
+
+Buffer
+A buffer is a temporary storage area in memory for raw binary data, used to manage and manipulate data efficiently.
   
+
+Types of Streams
+Readable Streams: Used to read data from a source.
+Writable Streams: Used to write data to a destination.
+Duplex Streams: Used for both reading and writing data (e.g., TCP sockets).
+Transform Streams: A type of duplex stream where the output is computed based on input (e.g., zlib streams for compression).
+
+Common Stream Methods and Events
+stream.on('data', callback): Attaches a callback to handle data chunks.
+stream.on('end', callback): Attaches a callback when the stream ends.
+stream.pipe(destination): Pipes the read data to a writable stream.
+
+Creating Buffers
+Buffer.alloc(size): Creates a buffer of the specified size, filled with zeros.
+Buffer.from(array): Creates a buffer from an array of bytes.
+Buffer.from(string, [encoding]): Creates a buffer from a string, optionally specifying the encoding (default is 'utf8').
+
+Common Buffer Methods
+buffer.length: Returns the length of the buffer.
+buffer.toString([encoding]): Converts the buffer to a string, optionally specifying the encoding.
+buffer.write(string, [offset], [length], [encoding]): Writes a string to the buffer.
+
+
+
+

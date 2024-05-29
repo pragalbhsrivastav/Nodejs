@@ -1,0 +1,62 @@
+Event Loop 
+Streams
+Event emmitter
+
+
+Q1. const loopName = (names) => {
+    names.map((data, i )=>{
+        console.log(data)
+    })
+}
+
+Q2. for(var i = 0 ; i<=5; i++){
+    console.log(`${i}`)
+}
+
+Q3. 
+ 
+setTimeout(()=>{
+    console.log("In setTimeout with timer 0)
+
+    setTimeout(()=>{
+        LoopNames(['Rahul', 'Ramesh'])
+        console.log("Seconf setTimeout)
+
+        setTimeout(()=>{
+            console.log("Third setTimeout)
+        },0)
+
+    },0)
+},0)
+
+console.log('')
+
+EventEmitter class is a core feature that allows objects to emit events and register listeners for those events. 
+It's part of the events module.
+
+Key Concepts
+Event Emitter: An object that can emit named events.
+Event Listener: A function that responds to an event.
+
+Import the events module: const EventEmitter = require('events');
+
+Create an instance of EventEmitter: const eventEmitter = new EventEmitter();
+
+Register an event listener:
+eventEmitter.on('eventName', () => {
+  console.log('eventName event was triggered');
+});
+
+Emit an event: eventEmitter.emit('eventName');
+
+
+const EventEmitter = require('events');
+const eventEmitter = new EventEmitter();
+
+// Register an event listener
+eventEmitter.on('greet', (name) => {
+  console.log(`Hello, ${name}!`);
+});
+
+// Emit the event
+eventEmitter.emit('greet', 'Alice');  // Output: Hello, Alice!
