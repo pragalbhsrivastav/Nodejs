@@ -41,7 +41,7 @@ safari - V8 JavaScript engine
 14th - Status Code
 15ht - MongoDB
 
-client ek request krta h server server
+client ek request krta h server
 
 request server me jaata h 
 sbse phle request event queue me queue hota h 
@@ -109,11 +109,11 @@ express: ^4.18.2
 ^4.18.2 (from 4.18.2 less than 5.0.0 )
 means don't update 1st part never
 
-if ~4.18.2 onlu update last part 
+if ~4.18.2 only update last part 
 
 
 
-Restfull API -- A RESTful API (Representational State Transferful Application Programming Interface) is an architectural style for designing networked applications.
+Restfull API -- A RESTful API (Representational State Transfer Application Programming Interface) is an architectural style for designing networked applications.
 It is based on a set of principles that define how resources are represented and addressed over the web.
 
 1. server Client arch.
